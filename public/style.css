@@ -1,0 +1,65 @@
+/* Bir önceki yanıttaki CSS kodunun aynısını buraya yapıştırın. */
+/* Tasarım aynı kalacak, değişiklik yapmaya gerek yok. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+:root {
+    --dark-blue: #1A2037; --cyan: #3A97D4; --dark-purple: #281332; --orange: #FB5600; --bg-color: #111;
+    --card-bg-color: rgba(20, 22, 38, 0.6); --text-color: #f0f0f0; --label-color: #a0a0b8;
+    --border-color: rgba(90, 150, 220, 0.2); --glow-color: rgba(58, 151, 212, 0.5);
+    --status-yes-color: #3ddc84; --status-no-color: #ff4d4d;
+}
+body {
+    background-color: var(--bg-color); overflow-x: hidden; position: relative; font-family: 'Inter', sans-serif;
+    color: var(--text-color); margin: 0; padding: 1.5rem; box-sizing: border-box; display: flex;
+    justify-content: center; align-items: flex-start; min-height: 100vh;
+}
+body::before, body::after {
+    content: ''; position: fixed; width: 800px; height: 800px; border-radius: 50%;
+    filter: blur(150px); z-index: -1; opacity: 0.4;
+}
+body::before {
+    background: radial-gradient(circle, var(--cyan), var(--dark-blue)); top: -20%; left: -20%;
+    animation: moveBlob1 25s infinite alternate ease-in-out;
+}
+body::after {
+    background: radial-gradient(circle, var(--orange), var(--dark-purple)); bottom: -20%; right: -20%;
+    animation: moveBlob2 20s infinite alternate-reverse ease-in-out;
+}
+@keyframes moveBlob1 { from { transform: translate(0, 0) scale(1); } to { transform: translate(100px, 200px) scale(1.2); } }
+@keyframes moveBlob2 { from { transform: translate(0, 0) scale(1.1); } to { transform: translate(-200px, -150px) scale(0.9); } }
+.main-container { width: 100%; max-width: 1200px; z-index: 1; }
+.footer { text-align: center; color: var(--label-color); padding-top: 1rem; opacity: 0.6; z-index: 1; }
+.card {
+    background-color: var(--card-bg-color); padding: 1.5rem 2rem; border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem; transition: all 0.4s ease-out;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.6), 0 0 30px var(--glow-color); }
+.search-card { padding: 1rem; }
+#ip-search-form { display: flex; gap: 1rem; }
+#ip-input { flex-grow: 1; background: transparent; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; color: var(--text-color); }
+#ip-input::placeholder { color: var(--label-color); }
+#ip-search-form button { background: linear-gradient(45deg, var(--cyan), #5a9fff); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: transform 0.2s ease; }
+#ip-search-form button:hover { transform: scale(1.05); }
+#loader { text-align: center; }
+.spinner-container { position: relative; width: 100%; height: 60px; background-color: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; margin-top: 20px; }
+.shimmer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); animation: shimmer 1.5s infinite; }
+@keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.error-message { text-align: center; color: var(--status-no-color); background-color: rgba(255, 77, 77, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid var(--status-no-color); }
+.hidden { display: none !important; }
+.content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 1024px) { .content-grid { grid-template-columns: 1fr; } }
+.header-card { display: flex; align-items: center; gap: 1.5rem; }
+#country-flag { font-size: 4rem; line-height: 1; }
+.header-info { flex-grow: 1; }
+.ip-label { font-size: 0.9rem; color: var(--label-color); }
+.header-info h1 { margin: 0.2rem 0; font-size: 2.2rem; font-weight: 700; color: #fff; word-break: break-all; }
+.map-card { padding: 0; overflow: hidden; min-height: 400px; }
+#map { height: 100%; width: 100%; }
+.info-card .card-title { margin-top: 0; margin-bottom: 1.5rem; font-weight: 700; color: #fff; }
+.info-grid { display: grid; grid-template-columns: 170px 1fr; gap: 1rem; align-items: center; }
+.label { font-weight: 500; color: var(--label-color); display: flex; align-items: center; gap: 0.75rem; }
+.label i { width: 20px; text-align: center; color: var(--cyan); }
+.value { font-weight: 500; word-wrap: break-word; }
+.status.yes { color: var(--status-yes-color); font-weight: 700; }
+.status.no { color: var(--status-no-color); font-weight: 700; }

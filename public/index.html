@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş IP Bilgi Sistemi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card search-card">
+            <form id="ip-search-form">
+                <input type="text" id="ip-input" placeholder="Bir IP adresi veya domain girin (ör: 8.8.8.8)">
+                <button type="submit">Sorgula</button>
+            </form>
+        </div>
+        <div id="loader" class="card">
+            <h2>Bilgiler Yükleniyor...</h2>
+            <div class="spinner-container"><div class="shimmer"></div></div>
+        </div>
+        <div id="content" class="hidden">
+            <div class="content-grid">
+                <div class="main-info-col">
+                    <div class="card header-card animated-card">
+                        <div id="country-flag"></div>
+                        <div class="header-info">
+                            <span class="ip-label">IP Adresi</span>
+                            <h1 id="ip"></h1>
+                        </div>
+                    </div>
+                    <div class="card map-card animated-card">
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <div class="details-col">
+                    <div class="card info-card animated-card">
+                        <h3 class="card-title">Konum Bilgileri</h3>
+                        <div class="info-grid">
+                            <div class="label"><i class="fa-solid fa-globe"></i> Ülke</div><div id="country" class="value"></div>
+                            <div class="label"><i class="fa-solid fa-map"></i> Bölge</div><div id="region" class="value"></div>
+                            <div class="label"><i class="fa-solid fa-city"></i> Şehir</div><div id="city" class="value"></div>
+                            <div class="label"><i class="fa-solid fa-location-crosshairs"></i> Koordinatlar</div><div id="coordinates" class="value"></div>
+                            <div class="label"><i class="fa-solid fa-clock"></i> Zaman Dilimi</div><div id="timezone" class="value"></div>
+                        </div>
+                    </div>
+                    <div class="card info-card animated-card">
+                        <h3 class="card-title">Ağ Bilgileri</h3>
+                        <div class="info-grid">
+                            <div class="label"><i class="fa-solid fa-wifi"></i> ISP</div><div id="isp" class="value"></div>
+                            <div class="label"><i class="fa-solid fa-server"></i> ASN</div><div id="asn" class="value"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Geliştirilmiş Versiyon</div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+</html>
